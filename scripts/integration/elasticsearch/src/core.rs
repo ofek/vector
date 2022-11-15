@@ -48,7 +48,7 @@ fn compose_command() -> Command {
 
 fn apply_env_vars(command: &mut Command, config: &Value) {
     if let Some(version) = config.get("version") {
-        command.env("ES_VERSION", version.as_str().unwrap());
+        command.env("ELASTICSEARCH_VERSION", version.as_str().unwrap());
     }
 
     if let Some(es_type) = config.get("type") {
@@ -56,7 +56,7 @@ fn apply_env_vars(command: &mut Command, config: &Value) {
             "classic" => "docker.io/elasticsearch",
             _ => "",
         };
-        command.env("ES_IMAGE", image);
+        command.env("ELASTICSEARCH_IMAGE", image);
     }
 }
 
